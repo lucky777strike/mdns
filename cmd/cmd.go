@@ -16,13 +16,9 @@ func Run() {
 		log.Fatalf("error initializing configs: %s", err.Error())
 	}
 
-	if viper.GetStringSlice("servers") == nil {
-		log.Fatal("no servers in config file")
-	}
-
-	if viper.GetStringSlice("logport") == nil {
-		log.Fatal("no servers in config file")
-	}
+	viper.SetDefault("servers", []string{"8.8.8.8:53"})
+	viper.SetDefault("servaddr", ":1234")
+	viper.SetDefault("logport", ":8080")
 
 	ress := resolver.New(viper.GetStringSlice("servers"), viper.GetString("logport"))
 
