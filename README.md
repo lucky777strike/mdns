@@ -6,7 +6,17 @@ Mdns - простой dns proxy сервер-балансир.
 Настройка configs/config.yml
 
 
-Запуск с gobuster на стандартном конфиге 
+Запуск с gobuster на стандартном конфиге
+
+./gobuster dns -r "127.0.0.1:1234" -d "google.com" -w /tmp/wordlist.txt -t 30
+
+
+Mdns is a simple dns proxy server-balancer. Distributes dns requests to multiple servers. Recommended for tasks like dns fuzzing. It has the simplest web interface for viewing statistics.
+
+Setting configs/config.yml
+
+Run with gobuster on standard config 
+
 ./gobuster dns -r "127.0.0.1:1234" -d "google.com" -w /tmp/wordlist.txt -t 30
 
 ![image](https://user-images.githubusercontent.com/119516169/204873673-2f5af56d-9715-4698-8129-8ca9297d7cb8.png)
