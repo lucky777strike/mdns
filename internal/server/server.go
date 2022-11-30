@@ -35,7 +35,9 @@ func (s *server) Run() {
 			log.Fatal(err)
 		}
 	}()
-
+	go func() {
+		s.resolver.StartServer()
+	}()
 }
 
 func New(addr string, resolver *resolver.Resolver) *server {
