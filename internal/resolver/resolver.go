@@ -26,10 +26,21 @@ func (res *Resolver) Exchange(m *dns.Msg) (r *dns.Msg, rtt time.Duration, err er
 	server := res.pickRandomServer()
 	resp, rtt, err := c.Exchange(m, server.addr)
 	server.log.Allreq.Inc()
+
 	if err != nil {
 		server.log.Err.Inc()
 		return nil, rtt, err
 	}
+
+	switch rcode := resp.MsgHdr.Rcode; rcode {
+	case 0:
+		server.log.RcodeSuccess.Inc()
+	case 2:
+		server.log.RcodeServerFailure.Inc()
+	case 3:
+		server.log.RcodeNameError.Inc()
+	}
+
 	return resp, rtt, err
 }
 
