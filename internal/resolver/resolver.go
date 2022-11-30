@@ -30,7 +30,6 @@ func (res *Resolver) Exchange(m *dns.Msg) (r *dns.Msg, rtt time.Duration, err er
 		server.log.Err.Inc()
 		return nil, rtt, err
 	}
-	fmt.Println(resp.MsgHdr.Rcode)
 	return resp, rtt, err
 }
 
