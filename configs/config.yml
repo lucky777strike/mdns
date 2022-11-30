@@ -1,3 +1,6 @@
-servaddr: :1234 
-logport: :8080
-servers: 1.1.1.1:53 8.8.8.8:53 8.8.4.4:53
+servaddr: ':1234' #ip:port dns proxy
+logport: ':8080'  #ip:port web interface
+servers:          #ip:port servers
+  - '1.1.1.1:53'
+  - '8.8.8.8:53'
+  - '8.8.4.4:53'
