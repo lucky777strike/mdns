@@ -18,6 +18,19 @@ servers:          #ip:port servers
 
 ```
 
+### Docker
+```
+git clone https://github.com/lucky777strike/mdns
+cd mdns
+docker build -t mdns .
+
+docker run -d \
+-p 8080:8080 \
+-p 1234:1234 \
+-p 1234:1234/udp \
+-v $(pwd)/configs/config.yml:/app/configs/config.yml \
+mdns
+```
 ### Примеры запуска
 Запуск с gobuster на стандартном конфиге
 ```
